@@ -1,5 +1,6 @@
 # House Price Prediction 
 
+**Overview:**
 Predict house prices with precision using Ridge and Lasso Regression in this data science project. Leverage advanced regression techniques to analyze and model housing data, achieving accurate predictions. Explore the codebase, methodology, and results for valuable insights into the housing market.
 
 **Key Features:**
