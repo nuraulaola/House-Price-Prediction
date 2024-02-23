@@ -1,3 +1,5 @@
+pip install scikit-learn
+
 import os
 import requests
 import pickle
