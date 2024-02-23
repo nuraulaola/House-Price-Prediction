@@ -74,11 +74,11 @@ def get_user_input(maximal_values):
     st.sidebar.header('User Input Parameters')
 
     # Add input elements for the user to enter data
-    made = st.sidebar.slider("Enter Year Made:", min_value=1800, max_value=maximal_values["made"], value=2000)
-    square_meters = st.sidebar.slider("Enter Square Meters:", min_value=0.0, max_value=maximal_values["squareMeters"], value=100.0)
-    number_of_rooms = st.sidebar.slider("Enter Number of Rooms:", min_value=0, max_value=maximal_values["numberOfRooms"], value=3)
-    has_storage_room = st.sidebar.checkbox("Has Storage Room")
-    has_guest_room = st.sidebar.checkbox("Has Guest Room")
+    made = st.sidebar.slider("Enter Year Made 🏠:", min_value=1800, max_value=maximal_values["made"], value=2000)
+    square_meters = st.sidebar.slider("Enter Square Meters 📏:", min_value=0.0, max_value=maximal_values["squareMeters"], value=100.0)
+    number_of_rooms = st.sidebar.slider("Enter Number of Rooms 🛏️:", min_value=0, max_value=maximal_values["numberOfRooms"], value=3)
+    has_storage_room = st.sidebar.checkbox(":package: Has Storage Room")
+    has_guest_room = st.sidebar.checkbox(":busts_in_silhouette: Has Guest Room")
     # Add more input elements for other features as needed
 
     # Create a dictionary with user input data
