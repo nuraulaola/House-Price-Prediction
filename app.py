@@ -20,6 +20,7 @@ maximal_values = {
     "made": 2022,
     "squareMeters": 5000.0,
     "numberOfRooms": 6,
+    # Add more key-value pairs for other features
 }
 
 # Streamlit app
@@ -48,9 +49,8 @@ def predict_ridge():
     # Make Ridge Regression Prediction
     prediction = Ridge_Model.predict(user_input)
 
-    # Display Ridge prediction with currency format
-    formatted_prediction = locale.currency(prediction[0], grouping=True)  # Format as currency
-    st.write(f"Predicted Price (Ridge Regression): {formatted_prediction}")
+    # Display Ridge prediction
+    st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
 
 def predict_lasso():
     st.header("Lasso Regression Prediction")
@@ -66,9 +66,8 @@ def predict_lasso():
     # Make Lasso Regression Prediction
     prediction = Lasso_Model.predict(user_input)
 
-    # Display Lasso prediction with currency format
-    formatted_prediction = locale.currency(prediction[0], grouping=True)  # Format as currency
-    st.write(f"Predicted Price (Lasso Regression): {formatted_prediction}")
+    # Display Lasso prediction
+    st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
 
 def get_user_input(maximal_values):
     # Create input form using Streamlit
