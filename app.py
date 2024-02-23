@@ -5,12 +5,6 @@ import streamlit.components.v1 as stc
 import pickle
 import pandas as pd
 import numpy as np
-import locale  
-
-try:
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-except locale.Error:
-    pass 
 
 with open('Label_Encoders.pkl', 'rb') as file:
     label_encoders = pickle.load(file)
