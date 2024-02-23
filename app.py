@@ -5,6 +5,9 @@ import streamlit.components.v1 as stc
 import pickle
 import pandas as pd
 import numpy as np
+import locale  
+
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8') 
 
 with open('Label_Encoders.pkl', 'rb') as file:
     label_encoders = pickle.load(file)
@@ -49,8 +52,9 @@ def predict_ridge():
     # Make Ridge Regression Prediction
     prediction = Ridge_Model.predict(user_input)
 
-    # Display Ridge prediction
-    st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
+    # Display Ridge prediction with currency format
+    formatted_prediction = locale.currency(prediction[0], grouping=True)  # Format as currency
+    st.write(f"Predicted Price (Ridge Regression): {formatted_prediction}")
 
 def predict_lasso():
     st.header("Lasso Regression Prediction")
@@ -66,8 +70,9 @@ def predict_lasso():
     # Make Lasso Regression Prediction
     prediction = Lasso_Model.predict(user_input)
 
-    # Display Lasso prediction
-    st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
+    # Display Lasso prediction with currency format
+    formatted_prediction = locale.currency(prediction[0], grouping=True)  # Format as currency
+    st.write(f"Predicted Price (Lasso Regression): {formatted_prediction}")
 
 def get_user_input(maximal_values):
     # Create input form using Streamlit
