@@ -58,14 +58,28 @@ def ridge_page():
     st.markdown("Ridge Regression helps our app predict house prices by keeping things simple and preventing"
                 " the computer from getting too complicated. 🏠💡")
 
-    predict_ridge()
+    prediction = predict_ridge()
+
+    # Display Ridge prediction in a floating box
+    st.success(f"🚀 **Great News!** Our magic model has predicted the house price using Ridge Regression. Based on the"
+               f" provided details, the estimated price is **${int(prediction)}**. 🏠✨")
+
+    # Show toast notification
+    st.toast('Ridge Regression prediction complete!', icon='😊')
 
 def lasso_page():
     st.header("Lasso Regression Prediction")
     st.markdown("Lasso Regression is another way our app predicts house prices. It focuses on the most important"
                 " things, making it easy to understand and keeping things clear. 🏡✨")
 
-    predict_lasso()
+    prediction = predict_lasso()
+
+    # Display Lasso prediction in a floating box
+    st.info(f"🚀 **Exciting News!** Our advanced model has made a prediction using Lasso Regression. Based on the"
+            f" information provided, the predicted house price is **${int(prediction)}**. 🏡✨")
+
+    # Show toast notification
+    st.toast('Lasso Regression prediction complete!', icon='😊')
 
 def predict_ridge():
     st.header("Ridge Regression Prediction")
@@ -81,13 +95,8 @@ def predict_ridge():
     # Make Ridge Regression Prediction
     prediction = Ridge_Model.predict(user_input)
 
-    # Display Ridge prediction in a floating box
-    st.success(f"🚀 **Great News!** Our magic model has predicted the house price using Ridge Regression. Based on the"
-               f" provided details, the estimated price is **${int(prediction[0])}**. 🏠✨")
-
-    # Show toast notification
-    st.toast('Ridge Regression prediction complete!', icon='😊')
-
+    return prediction[0]
+    
 def predict_lasso():
     st.header("Lasso Regression Prediction")
 
@@ -102,12 +111,7 @@ def predict_lasso():
     # Make Lasso Regression Prediction
     prediction = Lasso_Model.predict(user_input)
 
-    # Display Lasso prediction in a floating box
-    st.info(f"🚀 **Exciting News!** Our advanced model has made a prediction using Lasso Regression. Based on the"
-            f" information provided, the predicted house price is **${int(prediction[0])}**. 🏡✨")
-
-    # Show toast notification
-    st.toast('Lasso Regression prediction complete!', icon='😊')
+    return prediction[0]
 
 def get_user_input(maximal_values):
     # Create input form using Streamlit
