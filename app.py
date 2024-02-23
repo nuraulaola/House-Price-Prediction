@@ -2,7 +2,6 @@ import os
 import requests
 import pickle
 import streamlit as st
-import sklearn
 
 # Get the directory of the current script
 current_directory = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd()
