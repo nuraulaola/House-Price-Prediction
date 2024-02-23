@@ -3,7 +3,7 @@ import requests
 import pickle
 import streamlit as st
 
-# Get the directory of the current script (if running in a script)
+# Get the directory of the current script
 current_directory = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd()
 
 # Load label encoders
