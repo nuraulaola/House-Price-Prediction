@@ -20,7 +20,6 @@ maximal_values = {
     "made": 2022,
     "squareMeters": 5000.0,
     "numberOfRooms": 6,
-    # Add more key-value pairs for other features
 }
 
 # Streamlit app
