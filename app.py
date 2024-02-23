@@ -4,6 +4,7 @@ import os
 import requests
 import pickle
 import streamlit as st
+import streamlit.components.v1 as stc
 
 # Get the current working directory
 current_directory = os.getcwd()
