@@ -79,31 +79,17 @@ def get_user_input(maximal_values):
     has_storage_room = st.sidebar.checkbox(":package: Has Storage Room")
     has_guest_room = st.sidebar.checkbox(":busts_in_silhouette: Has Guest Room")
 
-    # Color picker for theme
-    app_theme_color = st.sidebar.color_picker("Pick App Theme Color", "#00f900")
-
-    # Check if the color is a valid hex color
-    if not is_valid_hex_color(app_theme_color):
-        st.sidebar.error("Please enter a valid hex color.")
-        st.stop()
-
-    # Set the app theme color
-    set_theme_color(app_theme_color)
-
-    # Return the user input as a DataFrame
-    return pd.DataFrame([{
+    # Create a dictionary with user input data
+    input_data = {
         "made": made,
         "squareMeters": square_meters,
         "numberOfRooms": number_of_rooms,
         "hasStorageRoom": has_storage_room,
         "hasGuestRoom": has_guest_room,
-    }])
+    }
 
-def set_theme_color(color):
-    st.set_page_config(page_title="House Price Prediction App", page_icon="🏠", layout="wide", initial_sidebar_state="expanded", theme="light", primaryColor=color)
-
-def is_valid_hex_color(s):
-    return bool(s) and s[0] == '#' and all(c in '0123456789abcdefABCDEF' for c in s[1:])
+    # Return the user input as a DataFrame
+    return pd.DataFrame([input_data])
 
 if __name__ == "__main__":
     main()
