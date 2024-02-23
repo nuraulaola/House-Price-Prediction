@@ -39,7 +39,7 @@ def predict_ridge():
             user_input[col] = label_encoders[col].transform(user_input[col])
 
     # Make Ridge Regression Prediction
-    prediction = ridge_model.predict(user_input)
+    prediction = Ridge_Model.predict(user_input)
 
     # Display Ridge prediction
     st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
@@ -56,7 +56,7 @@ def predict_lasso():
             user_input[col] = label_encoders[col].transform(user_input[col])
 
     # Make Lasso Regression Prediction
-    prediction = lasso_model.predict(user_input)
+    prediction = Lasso_Model.predict(user_input)
 
     # Display Lasso prediction
     st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
