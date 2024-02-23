@@ -9,6 +9,9 @@ Original file is located at
 # 1. Import Libraries
 """
 
+# Install Streamlit
+!pip install streamlit
+
 # Import necessary libraries
 import streamlit as st
 import pickle
@@ -293,8 +296,26 @@ fig5.show()
 Overall, the boxplot shows that houses with more storage rooms are generally more expensive
 """
 
+# create copy of DataFrame to make new index
+df_copy = data.copy()
+df_copy.reset_index(inplace=True)
+df_copy = df_copy.rename(columns={'index':'id'})
+
+df_copy
+
+# create pivot table based on unique value (index) to calculate the average price based on has storage room or not per year
+price_based_on_storage = pd.pivot_table(df_copy, values='price', index='made', columns='hasStorageRoom', aggfunc='mean').fillna(0)
+
+# Melt the pivot table to create a structure suitable for plotting
+melted_price_based_on_storage = price_based_on_storage.reset_index().melt(id_vars='made', var_name='Has Storage Room', value_name='Average Price')
+melted_price_based_on_storage['Average Price'] = round(melted_price_based_on_storage['Average Price']/1000000, 2)
+
+# Display or visualize the melted table
+print(melted_price_based_on_storage)
+
 # Create the horizontal bar plot
-plt.figure(figsize=(14, 12))  # Adjust figure size if needed
+import matplotlib.pyplot as plt
+plt.figure(figsize=(14, 12))  # Adjust figure size
 ax = sns.barplot(x='Average Price', y='made', hue='Has Storage Room', data=melted_price_based_on_storage, orient='h')
 
 # Set labels and title
@@ -474,28 +495,7 @@ print(Q3)
 print("\nIQR:")
 print(IQR)
 
-"""## 4.2 Data Manipulation
-
-"""
-
-# create copy of DataFrame to make new index
-df_copy = data.copy()
-df_copy.reset_index(inplace=True)
-df_copy = df_copy.rename(columns={'index':'id'})
-
-df_copy
-
-# create pivot table based on unique value (index) to calculate the average price based on has storage room or not per year
-price_based_on_storage = pd.pivot_table(df_copy, values='price', index='made', columns='hasStorageRoom', aggfunc='mean').fillna(0)
-
-# Melt the pivot table to create a structure suitable for plotting
-melted_price_based_on_storage = price_based_on_storage.reset_index().melt(id_vars='made', var_name='Has Storage Room', value_name='Average Price')
-melted_price_based_on_storage['Average Price'] = round(melted_price_based_on_storage['Average Price']/1000000, 2)
-
-# Display or visualize the melted table
-print(melted_price_based_on_storage)
-
-"""## 4.3 Feature Selection"""
+"""## 4.2 Feature Selection"""
 
 # Assuming there is a target variable (y) and predictor variables (X)
 X = data.drop('price', axis=1) # Remove the 'price' column from the dataset and create a new DataFrame X, the axis=1 parameter specifies that the operation should be performed along columns
@@ -872,12 +872,8 @@ output
 """# 8. Model Deployment"""
 
 # Load label encoders
-with open('label_encoders.pkl', 'rb') as file:
+with open('Label_Encoders.pkl', 'rb') as file:
     label_encoders = pickle.load(file)
-
-# Load scalers
-scaler_ridge = StandardScaler()
-scaler_lasso = StandardScaler()
 
 # Load Ridge Regression model
 with open('ridge_reg_model.pkl', 'rb') as file:
@@ -910,11 +906,8 @@ def predict_ridge():
         if col in label_encoders:
             user_input[col] = label_encoders[col].transform(user_input[col])
 
-    # Scale the input data using the Ridge scaler
-    input_data = scaler_ridge.transform(user_input)
-
     # Make Ridge Regression Prediction
-    prediction = ridge_model.predict(input_data)
+    prediction = ridge_model.predict(user_input)
 
     # Display Ridge prediction
     st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
@@ -930,11 +923,8 @@ def predict_lasso():
         if col in label_encoders:
             user_input[col] = label_encoders[col].transform(user_input[col])
 
-    # Scale the input data using the Lasso scaler
-    input_data = scaler_lasso.transform(user_input)
-
     # Make Lasso Regression Prediction
-    prediction = lasso_model.predict(input_data)
+    prediction = lasso_model.predict(user_input)
 
     # Display Lasso prediction
     st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
@@ -944,11 +934,25 @@ def get_user_input():
     st.sidebar.header('User Input Parameters')
 
     # Add input elements for the user to enter data
-    # Example: input_data = st.sidebar.text_input("Enter data here")
-    # Ensure the input format matches your model's requirements
+    made = st.sidebar.number_input("Enter Year Made:", min_value=1800, max_value=2022, value=2000)
+    square_meters = st.sidebar.number_input("Enter Square Meters:", min_value=0.0, value=100.0)
+    number_of_rooms = st.sidebar.number_input("Enter Number of Rooms:", min_value=0, value=3)
+    has_storage_room = st.sidebar.checkbox("Has Storage Room")
+    has_guest_room = st.sidebar.checkbox("Has Guest Room")
+    # Add more input elements for other features as needed
+
+    # Create a dictionary with user input data
+    input_data = {
+        "made": made,
+        "squareMeters": square_meters,
+        "numberOfRooms": number_of_rooms,
+        "hasStorageRoom": has_storage_room,
+        "hasGuestRoom": has_guest_room,
+        # Add more key-value pairs for other features
+    }
 
     # Return the user input as a DataFrame
-    return pd.DataFrame([input_data], columns=X_train.columns)
+    return pd.DataFrame([input_data])
 
 if __name__ == "__main__":
     main()
