@@ -44,14 +44,14 @@ def main():
 
     if model_choice == "Ridge Regression":
         st.subheader("Ridge Regression Prediction")
-        st.write("Ridge Regression helps our app predict house prices by keeping things simple and preventing"
-                 " the computer from getting too complicated. 🏠💡")
+        st.markdown("Ridge Regression helps our app predict house prices by keeping things simple and preventing"
+                    " the computer from getting too complicated. 🏠💡")
 
         predict_ridge()
     elif model_choice == "Lasso Regression":
         st.subheader("Lasso Regression Prediction")
-        st.write("Lasso Regression is another way our app predicts house prices. It focuses on the most important"
-                 " things, making it easy to understand and keeping things clear. 🏡✨")
+        st.markdown("Lasso Regression is another way our app predicts house prices. It focuses on the most important"
+                    " things, making it easy to understand and keeping things clear. 🏡✨")
 
         predict_lasso()
 
@@ -70,7 +70,7 @@ def predict_ridge():
     prediction = Ridge_Model.predict(user_input)
 
     # Display Ridge prediction
-    st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
+    st.markdown(f"Predicted Price (Ridge Regression): **{int(prediction[0])}**")
 
     # Show toast notification
     st.toast('Ridge Regression prediction complete!', icon='😊')
@@ -90,7 +90,7 @@ def predict_lasso():
     prediction = Lasso_Model.predict(user_input)
 
     # Display Lasso prediction
-    st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
+    st.markdown(f"Predicted Price (Lasso Regression): **{int(prediction[0])}**")
 
     # Show toast notification
     st.toast('Lasso Regression prediction complete!', icon='😊')
