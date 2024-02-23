@@ -6,6 +6,19 @@ import pickle
 import pandas as pd
 import numpy as np
 
+# Set page configuration
+st.set_page_config(
+    page_title="House Price Prediction App",
+    page_icon="🏠",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.example.com/help',
+        'Report a Bug': 'https://www.example.com/bug',
+        'About': "# House Price Prediction App\n\nThis app predicts house prices using Ridge and Lasso regression models."
+    }
+)
+
 with open('Label_Encoders.pkl', 'rb') as file:
     label_encoders = pickle.load(file)
 
