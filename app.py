@@ -39,21 +39,33 @@ maximal_values = {
 def main():
     st.title("House Price Prediction App")
 
-    # Sidebar to choose the model
-    model_choice = st.sidebar.radio("Select Model", ("Ridge Regression", "Lasso Regression"))
+    # Sidebar to choose the page
+    selected_page = st.sidebar.selectbox("Select Page", ["Home", "Ridge Regression", "Lasso Regression"])
 
-    if model_choice == "Ridge Regression":
-        st.header("Ridge Regression Prediction")
-        st.markdown("Ridge Regression helps our app predict house prices by keeping things simple and preventing"
-                    " the computer from getting too complicated. 🏠💡")
+    if selected_page == "Home":
+        home_page()
+    elif selected_page == "Ridge Regression":
+        ridge_page()
+    elif selected_page == "Lasso Regression":
+        lasso_page()
 
-        predict_ridge()
-    elif model_choice == "Lasso Regression":
-        st.header("Lasso Regression Prediction")
-        st.markdown("Lasso Regression is another way our app predicts house prices. It focuses on the most important"
-                    " things, making it easy to understand and keeping things clear. 🏡✨")
+def home_page():
+    st.header("Welcome to House Price Prediction App")
+    st.write("This app predicts house prices using Ridge and Lasso regression models.")
 
-        predict_lasso()
+def ridge_page():
+    st.header("Ridge Regression Prediction")
+    st.markdown("Ridge Regression helps our app predict house prices by keeping things simple and preventing"
+                " the computer from getting too complicated. 🏠💡")
+
+    predict_ridge()
+
+def lasso_page():
+    st.header("Lasso Regression Prediction")
+    st.markdown("Lasso Regression is another way our app predicts house prices. It focuses on the most important"
+                " things, making it easy to understand and keeping things clear. 🏡✨")
+
+    predict_lasso()
 
 def predict_ridge():
     st.header("Ridge Regression Prediction")
