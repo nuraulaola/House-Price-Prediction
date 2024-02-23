@@ -37,7 +37,7 @@ maximal_values = {
 
 # Streamlit app
 def main():
-    st.title("House Price Prediction Assitant App")
+    st.title("House Price Prediction Assistant App ⌂♡")
 
     # Sidebar to choose the page
     selected_page = st.sidebar.selectbox("Select Page", ["Home", "Ridge Regression", "Lasso Regression"])
