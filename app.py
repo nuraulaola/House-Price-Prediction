@@ -57,15 +57,19 @@ def home_page():
              " and confidence. Whether you're a homebuyer, seller, or just curious about the real estate market, our app"
              " leverages advanced Lasso and Ridge models to provide you with accurate predictions.")
     st.subheader("Key Features")
-    st.write("🔍 Cutting-Edge Models: We utilize sophisticated Lasso and Ridge regression models to analyze a plethora"
+    st.write("🔍 **Cutting-Edge Models**")
+    st.write("We utilize sophisticated Lasso and Ridge regression models to analyze a plethora"
              " of factors influencing house prices. These models are designed to handle complex datasets, ensuring robust"
              " predictions.")
-    st.write("📊 Data-Driven Insights: Our app thrives on data! By processing extensive real estate data, we provide you"
+    st.write("📊 **Data-Driven Insights**") 
+    st.write("Our app thrives on data! By processing extensive real estate data, we provide you"
              " with insights into the factors influencing property prices, allowing you to make informed decisions.")
-    st.write("📈 Predictive Accuracy: Trust the numbers! The Lasso and Ridge models incorporated in our app are renowned"
+    st.write("📈 **Predictive Accuracy**") 
+    st.write("Trust the numbers! The Lasso and Ridge models incorporated in our app are renowned"
              " for their predictive accuracy. We continuously update and fine-tune our models to ensure you get the most"
              " reliable estimates.")
-    st.write("🌐 User-Friendly Interface: Navigating through the world of house prices has never been easier. Our"
+    st.write("🌐 **User-Friendly Interface**") 
+    st.write("Navigating through the world of house prices has never been easier. Our"
              " user-friendly interface allows you to input property details effortlessly and receive instant"
              " predictions, making the process intuitive and efficient.")
 
