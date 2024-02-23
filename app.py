@@ -50,7 +50,7 @@ def main():
         lasso_page()
 
 def home_page():
-    st.header("Welcome to House Price Prediction App")
+    st.write("Welcome to House Price Prediction App!")
     st.write("This app predicts house prices using Ridge and Lasso regression models.")
 
 def ridge_page():
