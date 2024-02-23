@@ -59,15 +59,15 @@ def home_page():
     st.subheader("Key Features")
     st.write("🔍 Cutting-Edge Models: We utilize sophisticated Lasso and Ridge regression models to analyze a plethora"
              " of factors influencing house prices. These models are designed to handle complex datasets, ensuring robust"
-             " predictions."
+             " predictions.")
     st.write("📊 Data-Driven Insights: Our app thrives on data! By processing extensive real estate data, we provide you"
-             " with insights into the factors influencing property prices, allowing you to make informed decisions."
+             " with insights into the factors influencing property prices, allowing you to make informed decisions.")
     st.write("📈 Predictive Accuracy: Trust the numbers! The Lasso and Ridge models incorporated in our app are renowned"
              " for their predictive accuracy. We continuously update and fine-tune our models to ensure you get the most"
-             " reliable estimates."
+             " reliable estimates.")
     st.write("🌐 User-Friendly Interface: Navigating through the world of house prices has never been easier. Our"
              " user-friendly interface allows you to input property details effortlessly and receive instant"
-             " predictions, making the process intuitive and efficient."
+             " predictions, making the process intuitive and efficient.")
 
 def ridge_page():
     st.header("Ridge Regression Prediction")
