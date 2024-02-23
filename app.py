@@ -4,10 +4,9 @@ import os
 import requests
 import pickle
 import streamlit as st
-import streamlit.components.v1 as stc
 
-# Get the current working directory
-current_directory = os.getcwd()
+# Get the directory of the current script (if running in a script)
+current_directory = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd()
 
 # Load label encoders
 label_encoders_path = os.path.join(current_directory, 'Label_Encoders.pkl')
