@@ -52,6 +52,22 @@ def main():
 def home_page():
     st.write("Welcome to House Price Prediction App! ⌂♡")
     st.write("This app predicts house prices using Ridge and Lasso regression models.")
+    st.subheader("About")
+    st.write("The House Price Prediction Assistant App is your go-to tool for estimating property prices with precision"
+             " and confidence. Whether you're a homebuyer, seller, or just curious about the real estate market, our app"
+             " leverages advanced Lasso and Ridge models to provide you with accurate predictions.")
+    st.subheader("Key Features")
+    st.write("🔍 Cutting-Edge Models: We utilize sophisticated Lasso and Ridge regression models to analyze a plethora"
+             " of factors influencing house prices. These models are designed to handle complex datasets, ensuring robust"
+             " predictions."
+    st.write("📊 Data-Driven Insights: Our app thrives on data! By processing extensive real estate data, we provide you"
+             " with insights into the factors influencing property prices, allowing you to make informed decisions."
+    st.write("📈 Predictive Accuracy: Trust the numbers! The Lasso and Ridge models incorporated in our app are renowned"
+             " for their predictive accuracy. We continuously update and fine-tune our models to ensure you get the most"
+             " reliable estimates."
+    st.write("🌐 User-Friendly Interface: Navigating through the world of house prices has never been easier. Our"
+             " user-friendly interface allows you to input property details effortlessly and receive instant"
+             " predictions, making the process intuitive and efficient."
 
 def ridge_page():
     st.header("Ridge Regression Prediction")
