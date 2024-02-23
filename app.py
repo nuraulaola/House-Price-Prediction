@@ -82,7 +82,6 @@ def lasso_page():
     st.toast('Lasso Regression prediction complete!', icon='😊')
 
 def predict_ridge():
-    st.header("Ridge Regression Prediction")
 
     # Get user input
     user_input = get_user_input(maximal_values)
@@ -98,7 +97,6 @@ def predict_ridge():
     return prediction[0]
     
 def predict_lasso():
-    st.header("Lasso Regression Prediction")
 
     # Get user input
     user_input = get_user_input(maximal_values)
