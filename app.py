@@ -20,7 +20,6 @@ maximal_values = {
     "made": 2022,
     "squareMeters": 5000.0,
     "numberOfRooms": 6,
-    # Add more key-value pairs for other features
 }
 
 # Streamlit app
@@ -34,6 +33,39 @@ def main():
         predict_ridge()
     elif model_choice == "Lasso Regression":
         predict_lasso()
+
+    # Add a separator for better visualization
+    st.sidebar.markdown("---")
+
+    # Add color picker to the bottom part of the sidebar
+    st.sidebar.header("App Theme Color")
+    app_theme_color = st.sidebar.color_picker("Pick a Color", "#00f900")
+
+    # Set the theme color for other widgets
+    set_theme_color(app_theme_color)
+
+def set_theme_color(theme_color):
+    # Set theme color for Streamlit components
+    st.set_page_config(
+        page_title="House Price Prediction App",
+        page_icon=":house:",
+        layout="wide",
+        initial_sidebar_state="expanded",
+        theme="light",  
+    )
+
+    # Set theme color for specific Streamlit elements
+    st.markdown(
+        f"""
+        <style>
+            :root {{
+                --primary-color: {theme_color};
+                --text-color: black;  
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 def predict_ridge():
     st.header("Ridge Regression Prediction")
@@ -52,10 +84,6 @@ def predict_ridge():
     # Display Ridge prediction
     st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
 
-    # Add color picker
-    selected_color = st.color_picker("Pick a Color", "#00f900")
-    st.write(f'The selected color is {selected_color}')
-
 def predict_lasso():
     st.header("Lasso Regression Prediction")
 
@@ -73,10 +101,6 @@ def predict_lasso():
     # Display Lasso prediction
     st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
 
-    # Add color picker
-    selected_color = st.color_picker("Pick a Color", "#00f900")
-    st.write(f'The selected color is {selected_color}')
-
 def get_user_input(maximal_values):
     # Create input form using Streamlit
     st.sidebar.header('User Input Parameters')
@@ -87,7 +111,6 @@ def get_user_input(maximal_values):
     number_of_rooms = st.sidebar.slider("Enter Number of Rooms 🛏️:", min_value=0, max_value=maximal_values["numberOfRooms"], value=3)
     has_storage_room = st.sidebar.checkbox(":package: Has Storage Room")
     has_guest_room = st.sidebar.checkbox(":busts_in_silhouette: Has Guest Room")
-    # Add more input elements for other features as needed
 
     # Create a dictionary with user input data
     input_data = {
@@ -96,7 +119,6 @@ def get_user_input(maximal_values):
         "numberOfRooms": number_of_rooms,
         "hasStorageRoom": has_storage_room,
         "hasGuestRoom": has_guest_room,
-        # Add more key-value pairs for other features
     }
 
     # Return the user input as a DataFrame
