@@ -34,39 +34,6 @@ def main():
     elif model_choice == "Lasso Regression":
         predict_lasso()
 
-    # Add a separator for better visualization
-    st.sidebar.markdown("---")
-
-    # Add color picker to the bottom part of the sidebar
-    st.sidebar.header("App Theme Color")
-    app_theme_color = st.sidebar.color_picker("Pick a Color", "#00f900")
-
-    # Set the theme color for other widgets
-    set_theme_color(app_theme_color)
-
-def set_theme_color(theme_color):
-    # Set theme color for Streamlit components
-    st.set_page_config(
-        page_title="House Price Prediction App",
-        page_icon=":house:",
-        layout="wide",
-        initial_sidebar_state="expanded",
-        theme="light",  
-    )
-
-    # Set theme color for specific Streamlit elements
-    st.markdown(
-        f"""
-        <style>
-            :root {{
-                --primary-color: {theme_color};
-                --text-color: black;  
-            }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
 def predict_ridge():
     st.header("Ridge Regression Prediction")
 
@@ -112,17 +79,23 @@ def get_user_input(maximal_values):
     has_storage_room = st.sidebar.checkbox(":package: Has Storage Room")
     has_guest_room = st.sidebar.checkbox(":busts_in_silhouette: Has Guest Room")
 
-    # Create a dictionary with user input data
-    input_data = {
-        "made": made,
-        "squareMeters": square_meters,
-        "numberOfRooms": number_of_rooms,
-        "hasStorageRoom": has_storage_room,
-        "hasGuestRoom": has_guest_room,
-    }
+    # Color picker for theme
+    app_theme_color = st.sidebar.color_picker("Pick App Theme Color", "#00f900")
+
+    # Set the app theme color
+    set_theme_color(app_theme_color)
 
     # Return the user input as a DataFrame
-    return pd.DataFrame([input_data])
+    return pd.DataFrame({
+        "made": [made],
+        "squareMeters": [square_meters],
+        "numberOfRooms": [number_of_rooms],
+        "hasStorageRoom": [has_storage_room],
+        "hasGuestRoom": [has_guest_room],
+    })
+
+def set_theme_color(color):
+    st.set_page_config(page_title="House Price Prediction App", page_icon="🏠", layout="wide", initial_sidebar_state="expanded", theme="light")
 
 if __name__ == "__main__":
     main()
