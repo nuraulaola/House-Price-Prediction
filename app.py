@@ -1,37 +1,19 @@
 import os
 import requests
-import pickle
 import streamlit as st
+import streamlit.components.v1 as stc
+import pickle
+import pandas as pd
+import numpy as np
 
-# Get the directory of the current script
-current_directory = os.path.dirname(os.path.abspath(__file__)) if '__file__' in locals() else os.getcwd()
+with open('Label_Encoders.pkl', 'rb') as file:
+        Label_Encoders = pickle.load(file)
 
-# Load label encoders
-label_encoders_path = os.path.join(current_directory, 'Label_Encoders.pkl')
-if os.path.exists(label_encoders_path):
-    with open(label_encoders_path, 'rb') as file:
-        label_encoders = pickle.load(file)
-else:
-    st.error(f"Label encoders file not found at {label_encoders_path}")
-    st.stop()
+with open('ridge_reg_model.pkl', 'rb') as file:
+        Ridge_Model = pickle.load(file)
 
-# Load Ridge Regression model
-ridge_model_path = os.path.join(current_directory, 'ridge_reg_model.pkl')
-if os.path.exists(ridge_model_path):
-    with open(ridge_model_path, 'rb') as file:
-        ridge_model = pickle.load(file)
-else:
-    st.error(f"Ridge Regression model file not found at {ridge_model_path}")
-    st.stop()
-
-# Load Lasso Regression model
-lasso_model_path = os.path.join(current_directory, 'lasso_reg_model.pkl')
-if os.path.exists(lasso_model_path):
-    with open(lasso_model_path, 'rb') as file:
-        lasso_model = pickle.load(file)
-else:
-    st.error(f"Lasso Regression model file not found at {lasso_model_path}")
-    st.stop()
+with open('lasso_reg_model.pkl', 'rb') as file:
+        Lasso_Model = pickle.load(file)
 
 # Streamlit app
 def main():
