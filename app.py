@@ -43,13 +43,13 @@ def main():
     model_choice = st.sidebar.radio("Select Model", ("Ridge Regression", "Lasso Regression"))
 
     if model_choice == "Ridge Regression":
-        st.subheader("Ridge Regression Prediction")
+        st.header("Ridge Regression Prediction")
         st.markdown("Ridge Regression helps our app predict house prices by keeping things simple and preventing"
                     " the computer from getting too complicated. 🏠💡")
 
         predict_ridge()
     elif model_choice == "Lasso Regression":
-        st.subheader("Lasso Regression Prediction")
+        st.header("Lasso Regression Prediction")
         st.markdown("Lasso Regression is another way our app predicts house prices. It focuses on the most important"
                     " things, making it easy to understand and keeping things clear. 🏡✨")
 
