@@ -8,7 +8,7 @@ import numpy as np
 
 # Set page configuration
 st.set_page_config(
-    page_title="House Price Prediction App",
+    page_title="House Price Prediction Assistant App",
     page_icon="🏠",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -37,7 +37,7 @@ maximal_values = {
 
 # Streamlit app
 def main():
-    st.title("House Price Prediction App")
+    st.title("House Price Prediction Assitant App")
 
     # Sidebar to choose the page
     selected_page = st.sidebar.selectbox("Select Page", ["Home", "Ridge Regression", "Lasso Regression"])
@@ -50,7 +50,7 @@ def main():
         lasso_page()
 
 def home_page():
-    st.header("Welcome to House Price Prediction App")
+    st.header("Welcome to House Price Prediction Assistant App")
     st.write("This app predicts house prices using Ridge and Lasso regression models.")
 
 def ridge_page():
