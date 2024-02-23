@@ -52,6 +52,10 @@ def predict_ridge():
     # Display Ridge prediction
     st.write(f"Predicted Price (Ridge Regression): {int(prediction[0])}")
 
+    # Add color picker
+    selected_color = st.color_picker("Pick a Color", "#00f900")
+    st.write(f'The selected color is {selected_color}')
+
 def predict_lasso():
     st.header("Lasso Regression Prediction")
 
@@ -68,6 +72,10 @@ def predict_lasso():
 
     # Display Lasso prediction
     st.write(f"Predicted Price (Lasso Regression): {int(prediction[0])}")
+
+    # Add color picker
+    selected_color = st.color_picker("Pick a Color", "#00f900")
+    st.write(f'The selected color is {selected_color}')
 
 def get_user_input(maximal_values):
     # Create input form using Streamlit
