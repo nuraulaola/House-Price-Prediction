@@ -8,7 +8,7 @@ import numpy as np
 
 # Set page configuration
 st.set_page_config(
-    page_title="House Price Prediction Assistant App",
+    page_title="House Price Prediction Assistant App ⋆｡ﾟ☁︎",
     page_icon="🏠",
     layout="wide",
     initial_sidebar_state="expanded",
