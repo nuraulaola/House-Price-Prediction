@@ -1,5 +1,3 @@
-!pip install streamlit
-
 import os
 import requests
 import pickle
