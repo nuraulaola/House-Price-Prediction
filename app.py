@@ -69,8 +69,9 @@ def predict_ridge():
     # Make Ridge Regression Prediction
     prediction = Ridge_Model.predict(user_input)
 
-    # Display Ridge prediction
-    st.markdown(f"Predicted Price (Ridge Regression): **{int(prediction[0])}**")
+    # Display Ridge prediction in a floating box
+    st.success(f"🚀 **Great News!** Our magic model has predicted the house price using Ridge Regression. Based on the"
+               f" provided details, the estimated price is **${int(prediction[0])}**. 🏠✨")
 
     # Show toast notification
     st.toast('Ridge Regression prediction complete!', icon='😊')
@@ -89,8 +90,9 @@ def predict_lasso():
     # Make Lasso Regression Prediction
     prediction = Lasso_Model.predict(user_input)
 
-    # Display Lasso prediction
-    st.markdown(f"Predicted Price (Lasso Regression): **{int(prediction[0])}**")
+    # Display Lasso prediction in a floating box
+    st.info(f"🚀 **Exciting News!** Our advanced model has made a prediction using Lasso Regression. Based on the"
+            f" information provided, the predicted house price is **${int(prediction[0])}**. 🏡✨")
 
     # Show toast notification
     st.toast('Lasso Regression prediction complete!', icon='😊')
